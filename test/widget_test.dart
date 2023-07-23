@@ -1,30 +1,34 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:random_colour/main.dart';
+import 'package:random_colour/rc_app.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('App displays "Hello there" text', (WidgetTester tester) async {
+    await tester.pumpWidget(RCApp());
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Check if the text is present
+    expect(find.text('Hello there'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Check if the text style has the correct font weight
+    final textWidget = tester.widget<Text>(find.text('Hello there'));
+    expect(textWidget.style?.fontWeight, FontWeight.bold);
+  });
+
+  testWidgets('Background color changes on tap', (WidgetTester tester) async {
+    await tester.pumpWidget(RCApp());
+
+    //Background colour before tapping the screen
+    final backgroundColorBeforeTap =
+        tester.widget<Scaffold>(find.byType(Scaffold)).backgroundColor;
+
+    await tester.tap(find.byType(Scaffold));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    //New Background colour after tapping the screen
+    final backgroundColorAfterTap =
+        tester.widget<Scaffold>(find.byType(Scaffold)).backgroundColor;
+
+    //Checks whether the background colour is changed
+    expect(backgroundColorAfterTap, isNot(equals(backgroundColorBeforeTap)));
   });
 }
