@@ -13,28 +13,28 @@ extension RCStrings on BuildContext {
   }
 }
 
-///To get string of overall app
+/// To get string of overall app
 class RCStringDetail {
-  ///To get string of English language
+  /// To get string of English language
   final String english;
 
-  ///To get string of French language
+  /// To get string of French language
   final String? french;
 
-  ///String details constructor
+  /// String details constructor
   RCStringDetail({
     required this.english,
     this.french,
   });
 }
 
-///To get string of Hello There text
+/// To get string of Hello There text
 RCStringDetail get tvHelloThere => RCStringDetail(
       english: 'Hello there',
       french: 'Bonjour',
     );
 
-///To get string of App Bar Title
+/// To get string of App Bar Title
 RCStringDetail get tvAppBarTitle => RCStringDetail(
       english: 'Random Color Generator',
     );

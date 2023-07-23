@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-///To get the colors according to the theme
+/// To get the colors according to the theme
 extension RCColors on BuildContext {
   /// Boolean to check whether the theme is light mode
   bool get isLightMode => Theme.of(this).brightness == Brightness.light;
@@ -17,15 +17,15 @@ extension RCColors on BuildContext {
               : lightDarkColor.dark ?? lightDarkColor.any;
 }
 
-///To get color of overall app
+/// To get color of overall app
 class RCColorDetail {
-  ///Color which is set as a default value
+  /// Color which is set as a default value
   final Color any;
 
-  ///Color which is set for light mode
+  /// Color which is set for light mode
   final Color? light;
 
-  ///Color which is set for dark mode
+  /// Color which is set for dark mode
   final Color? dark;
 
   /// To get the colors according to the theme

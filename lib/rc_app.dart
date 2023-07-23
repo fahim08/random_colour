@@ -6,7 +6,7 @@ import 'package:random_colour/common/res/rc_colors.dart';
 import 'package:random_colour/common/res/rc_dimens.dart';
 import 'package:random_colour/common/res/rc_strings.dart';
 
-///Random Colors App
+/// Random Colors App
 class RCApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class RCApp extends StatelessWidget {
   }
 }
 
-///Random Colors App
+/// Random Colors App
 class RandomColourApp extends StatefulWidget {
   @override
   State<RandomColourApp> createState() => _RandomColourAppState();
@@ -38,6 +38,7 @@ class _RandomColourAppState extends State<RandomColourApp> {
     });
   }
 
+  // To update the text color
   void _updateTextColor() {
     // Calculate the luminance of the background color
     final double luminance = _initialBackgroundColor.computeLuminance();
@@ -47,6 +48,7 @@ class _RandomColourAppState extends State<RandomColourApp> {
         luminance > RCConstants.cvBaseLuminous ? Colors.black : Colors.white;
   }
 
+  // To update the background color
   Color _generateRandomColor() {
     final Random random = Random();
 
@@ -54,7 +56,7 @@ class _RandomColourAppState extends State<RandomColourApp> {
       random.nextInt(RCConstants.cvRGBMaxValue),
       random.nextInt(RCConstants.cvRGBMaxValue),
       random.nextInt(RCConstants.cvRGBMaxValue),
-      1,
+      RCConstants.cvOpacity,
     );
   }
 
